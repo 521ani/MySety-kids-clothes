@@ -1,0 +1,17 @@
+CREATE OR ALTER PROC usp_3 (@date DATE)
+AS
+SELECT t.Name, i.Date, i.ID AS InvoiceNumber
+FROM Invoice AS i
+INNER JOIN Trader AS t
+ON i.TraderID=t.ID
+WHERE i.Date=@date; 
+GO
+
+CREATE OR ALTER PROC usp_2 (@name nvarchar(20))
+AS
+SELECT *
+FROM Goods 
+WHERE Name like '%'+@name+'%'; 
+GO
+
+EXEC usp_2 'бански';
